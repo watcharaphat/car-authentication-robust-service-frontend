@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { setUsersKey } from '../../actions/User';
 import DashboardTemplate from './Template';
-// import crypto from 'crypto';
+import crypto from 'crypto';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -25,7 +25,6 @@ class Dashboard extends Component {
       throw err;
     }
 
-    console.log('users:', users);
     this.props.setUsersKey(users);
 
     this.setState({
@@ -39,29 +38,29 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log('users:', this.props.users);
+    console.log('user1:', this.props.users['1']);
 
-    if (this.props.users) {
-      // console.log('*** render ***');
-      // const signer = crypto.createSign('sha256');
-      // const data = 'bobo';
-      // signer.update(data);
-      // signer.end();
+    // if (this.props.users['1'].privateKey) {
+    //   console.log('*** render ***');
+    //   const signer = crypto.createSign('sha256');
+    //   const data = 'bobo';
+    //   signer.update(data);
+    //   signer.end();
 
-      // const privateKey = this.props.users['1'].privateKey;
-      // const signature = signer.sign(privateKey);
+    //   const privateKey = this.props.users['1'].privateKey;
+    //   const signature = signer.sign(privateKey);
 
-      // console.log('signature:', signature);
+    //   console.log('signature:', signature);
 
-      // const verifier = crypto.createVerify('sha256');
-      // verifier.update(data);
-      // verifier.end();
+    //   const verifier = crypto.createVerify('sha256');
+    //   verifier.update(data);
+    //   verifier.end();
 
-      // const publicKey = this.props.users['1'].publicKey;
-      // const result = verifier.verify(publicKey, signature, 'hex');
+    //   const publicKey = this.props.users['1'].publicKey;
+    //   const result = verifier.verify(publicKey, signature, 'hex');
 
-      // console.log('result:', result);
-    }
+    //   console.log('result:', result);
+    // }
 
     return DashboardTemplate.call(this);
   }
