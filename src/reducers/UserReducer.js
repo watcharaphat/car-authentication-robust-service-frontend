@@ -1,8 +1,7 @@
 const initialState = {
-  users: {
-    '1': {
-      publicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfMK3NeABKX5lHhOQfEYO7ffUiUavGfADzWJ6heoHBjEtF2sinqjuo86D6A4o/z+XVAIyKsaaLOnfYPEC6FHfwnqScn5lVK19a3eux6/EL55ZxIjWDoW70fiJAEhKG9w6NeIDv8BQ2sa72CkLxwrSwJNuieLz5FhUjtIvbbsyMgYW3jO7Gx6O8Nw/8g7nPcYZgmJJDsTEW5RehgF1kWBmNNwXXdQBuF37cB5B9OucwmLc9npzNsehekavZGnx+aciyKQXvE7kzLutVcpPcHUwGIkLJtHk/IjOkEpI9s99S/LIiYD6krjvXtdAm/NfVfedp2AkoVTw/A9yUOyOVyvf9 watcharaphat@Watcharaphats-MacBook.local',
-      privateKey: `-----BEGIN RSA PRIVATE KEY-----
+  user1: {
+    publicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfMK3NeABKX5lHhOQfEYO7ffUiUavGfADzWJ6heoHBjEtF2sinqjuo86D6A4o/z+XVAIyKsaaLOnfYPEC6FHfwnqScn5lVK19a3eux6/EL55ZxIjWDoW70fiJAEhKG9w6NeIDv8BQ2sa72CkLxwrSwJNuieLz5FhUjtIvbbsyMgYW3jO7Gx6O8Nw/8g7nPcYZgmJJDsTEW5RehgF1kWBmNNwXXdQBuF37cB5B9OucwmLc9npzNsehekavZGnx+aciyKQXvE7kzLutVcpPcHUwGIkLJtHk/IjOkEpI9s99S/LIiYD6krjvXtdAm/NfVfedp2AkoVTw/A9yUOyOVyvf9 watcharaphat@Watcharaphats-MacBook.local',
+    privateKey: `-----BEGIN RSA PRIVATE KEY-----
       MIIEowIBAAKCAQEAnzCtzXgASl+ZR4TkHxGDu331IlGrxnwA81ieoXqBwYxLRdrI
       p6o7qPOg+gOKP8/l1QCMirGmizp32DxAuhR38J6knJ+ZVStfWt3rsevxC+eWcSI1
       g6Fu9H4iQBIShvcOjXiA7/AUNrGu9gpC8cK0sCTboni8+RYVI7SL227MjIGFt4zu
@@ -29,10 +28,10 @@ const initialState = {
       SezWxiM19Oz/eCk9eZRl7bnWlUJkRKhy208WuyNpxq1NZWi/lbBVEnfGUi7VLXkf
       hOEoQvZ/7RHPoPkhoTxuAQqoovtN/xIYGr/Qa4HKnoJDSizHPWqf
       -----END RSA PRIVATE KEY-----`,
-    },
-    '2': {
-      publicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0oAMcgaGCwpIjEzNi+dIwA0Pp1etZt6ElFz5sq04zinVjQ8HOQd3oTHovIYNTO4PKrE1fm85OrKK05p80PXUsOwJ7aaOyCM9fvNTlowWZtj5rKELyrRmW1qZ8MHj8c9RYVSbDJuEOXOsKuw6gcU05wFq+Tt4KoMTWGPCr+9TFf4L0+nPdthJqTkJgJegObvBJXw7u+Co+dPZjT0KescjpaGm7+XVU9viigHKGD6+yWrLpsSjkPy4MHvEyca41Gxf6+EKjLnBMhMBnOkyf4NsP1DhMyrwVcMcPk+AXx+/0HVV9jPN1rgsPGjKEXpqZqs0PRD868YCKH4hCmehrob5t watcharaphat@Watcharaphats-MacBook.local',
-      privateKey: `-----BEGIN RSA PRIVATE KEY-----
+  },
+  user2: {
+    publicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0oAMcgaGCwpIjEzNi+dIwA0Pp1etZt6ElFz5sq04zinVjQ8HOQd3oTHovIYNTO4PKrE1fm85OrKK05p80PXUsOwJ7aaOyCM9fvNTlowWZtj5rKELyrRmW1qZ8MHj8c9RYVSbDJuEOXOsKuw6gcU05wFq+Tt4KoMTWGPCr+9TFf4L0+nPdthJqTkJgJegObvBJXw7u+Co+dPZjT0KescjpaGm7+XVU9viigHKGD6+yWrLpsSjkPy4MHvEyca41Gxf6+EKjLnBMhMBnOkyf4NsP1DhMyrwVcMcPk+AXx+/0HVV9jPN1rgsPGjKEXpqZqs0PRD868YCKH4hCmehrob5t watcharaphat@Watcharaphats-MacBook.local',
+    privateKey: `-----BEGIN RSA PRIVATE KEY-----
       MIIEowIBAAKCAQEAtKADHIGhgsKSIxMzYvnSMAND6dXrWbehJRc+bKtOM4p1Y0PB
       zkHd6Ex6LyGDUzuDyqxNX5vOTqyitOafND11LDsCe2mjsgjPX7zU5aMFmbY+ayhC
       8q0ZltamfDB4/HPUWFUmwybhDlzrCrsOoHFNOcBavk7eCqDE1hjwq/vUxX+C9Ppz
@@ -59,11 +58,10 @@ const initialState = {
       BcLfDVrDyPmL9z3tIZpOgNmChut4IcmN43uVddQHx/cPxlE2WdZgb8lzkVVmly/x
       yqHfUddEHDkSMzw+t/v17ROYwLD9PaZYjjuEZbVoBDPIn4ywGbz0
       -----END RSA PRIVATE KEY-----`
-    },
   },
 };
 
-export const user = (state = initialState, action) => {
+export const users = (state = initialState, action) => {
   switch (action.type) {
     default:
       return initialState;
