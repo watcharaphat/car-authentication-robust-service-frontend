@@ -38,6 +38,24 @@ class Dashboard extends Component {
     });
   }
 
+  async onClickButton() {
+    axios.defaults.baseURL = 'http://travelerhub.xyz:3000/api';
+
+    try{ 
+      let payload ={ 
+        carId: "1",
+        period: {
+          start: "ts",
+          end: "ts",
+        },
+        assignTo: "string"
+      };
+      const response = await axios.post('/app/users', payload);
+    } catch (err) {
+      throw err;
+    }
+  }
+
   render() {
     console.log('users:', this.props.users);
 
