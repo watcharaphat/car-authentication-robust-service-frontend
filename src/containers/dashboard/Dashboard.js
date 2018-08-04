@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { setUsersKey } from '../../actions/User';
 import DashboardTemplate from './Template';
-// import crypto from 'crypto';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -17,16 +16,15 @@ class Dashboard extends Component {
   async componentDidMount() {
     axios.defaults.baseURL = 'http://travelerhub.xyz:3000/api';
 
-    let users;
-    try {
-      const response = await axios.get('/key');
-      users = response.data;
-    } catch (err) {
-      throw err;
-    }
+    // let users;
+    // try {
+    //   const response = await axios.get('/key');
+    //   users = response.data;
+    // } catch (err) {
+    //   throw err;
+    // }
 
-    console.log('users:', users);
-    this.props.setUsersKey(users);
+    // this.props.setUsersKey(users);
 
     this.setState({
       myCars: [
@@ -57,29 +55,27 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log('users:', this.props.users);
+    // if (this.props.users['1'].privateKey) {
+    //   console.log('*** render ***');
+    //   const signer = crypto.createSign('sha256');
+    //   const data = 'bobo';
+    //   signer.update(data);
+    //   signer.end();
 
-    if (this.props.users) {
-      // console.log('*** render ***');
-      // const signer = crypto.createSign('sha256');
-      // const data = 'bobo';
-      // signer.update(data);
-      // signer.end();
+    //   const privateKey = this.props.users['1'].privateKey;
+    //   const signature = signer.sign(privateKey);
 
-      // const privateKey = this.props.users['1'].privateKey;
-      // const signature = signer.sign(privateKey);
+    //   console.log('signature:', signature);
 
-      // console.log('signature:', signature);
+    //   const verifier = crypto.createVerify('sha256');
+    //   verifier.update(data);
+    //   verifier.end();
 
-      // const verifier = crypto.createVerify('sha256');
-      // verifier.update(data);
-      // verifier.end();
+    //   const publicKey = this.props.users['1'].publicKey;
+    //   const result = verifier.verify(publicKey, signature, 'hex');
 
-      // const publicKey = this.props.users['1'].publicKey;
-      // const result = verifier.verify(publicKey, signature, 'hex');
-
-      // console.log('result:', result);
-    }
+    //   console.log('result:', result);
+    // }
 
     return DashboardTemplate.call(this);
   }
