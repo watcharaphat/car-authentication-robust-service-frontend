@@ -24,6 +24,8 @@ class Dashboard extends Component {
   }
 
   render() {
+    console.log('userId:', this.props.userId);
+
     if (this.props.users) {
       // console.log('*** render ***');
       // const signer = crypto.createSign('sha256');
@@ -52,6 +54,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
   return {
+    userId: state.userId,
     users: state.users,
   };
 };

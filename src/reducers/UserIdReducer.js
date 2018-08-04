@@ -1,6 +1,6 @@
 const initialState = '1';
 
-export const userId = (state = initialState, payload) => {
+export const userId = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_USER_ID':
       return action.payload;
