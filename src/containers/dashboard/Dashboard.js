@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import { setUsersKey } from '../../actions/User';
 import DashboardTemplate from './Template';
 // import crypto from 'crypto';
 
@@ -12,7 +14,20 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    axios.defaults.baseURL = 'http://travelerhub.xyz:3000/api';
+
+    let users;
+    try {
+      const response = await axios.get('/key');
+      users = response.data;
+    } catch (err) {
+      throw err;
+    }
+
+    console.log('users:', users);
+    this.props.setUsersKey(users);
+
     this.setState({
       myCars: [
         {
@@ -24,7 +39,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log('userId:', this.props.userId);
+    console.log('users:', this.props.users);
 
     if (this.props.users) {
       // console.log('*** render ***');
@@ -59,4 +74,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, { setUsersKey })(Dashboard);
