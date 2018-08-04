@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { setUsersKey } from '../../actions/User';
 import DashboardTemplate from './Template';
-import crypto from 'crypto';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -17,15 +16,15 @@ class Dashboard extends Component {
   async componentDidMount() {
     axios.defaults.baseURL = 'http://travelerhub.xyz:3000/api';
 
-    let users;
-    try {
-      const response = await axios.get('/key');
-      users = response.data;
-    } catch (err) {
-      throw err;
-    }
+    // let users;
+    // try {
+    //   const response = await axios.get('/key');
+    //   users = response.data;
+    // } catch (err) {
+    //   throw err;
+    // }
 
-    this.props.setUsersKey(users);
+    // this.props.setUsersKey(users);
 
     this.setState({
       myCars: [
@@ -38,8 +37,6 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log('user1:', this.props.users['1']);
-
     // if (this.props.users['1'].privateKey) {
     //   console.log('*** render ***');
     //   const signer = crypto.createSign('sha256');

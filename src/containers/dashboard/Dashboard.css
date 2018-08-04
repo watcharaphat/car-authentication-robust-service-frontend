@@ -12,3 +12,17 @@
 .car-model {
   margin-top: 0.5rem !important;
 }
+
+.provide-access {
+  margin: auto;
+}
+
+.provide-span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.provide-select {
+  margin-left: 15px;
+  margin-right: 15px;
+}
