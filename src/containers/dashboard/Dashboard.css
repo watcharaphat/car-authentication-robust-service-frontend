@@ -1,0 +1,14 @@
+.car-logo {
+  display: block;
+  width: 5em;
+  height: auto;
+  margin: auto;
+}
+
+.car-name {
+  margin: 0 !important;
+}
+
+.car-model {
+  margin-top: 0.5rem !important;
+}

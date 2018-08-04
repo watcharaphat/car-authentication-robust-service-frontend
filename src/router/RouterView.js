@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from '../components/navbar/Navbar';
-import Dashboard from '../containers/Dashboard';
+import Dashboard from '../containers/dashboard/Dashboard';
 import NoMatch from './NoMatch';
 
 class RouterView extends Component {
