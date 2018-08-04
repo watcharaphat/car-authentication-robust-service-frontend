@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
+import Dropdown from './Dropdown';
 
-export default function () {
+const NavbarTemplate = ({dropDownShow, onClickDropdown, setUserId}) => {
   return (
     <Fragment>
       <div className="navbar" role="navigation" aria-label="main navigation">
@@ -8,12 +9,15 @@ export default function () {
           <a className="navbar-item">
             <h1 className="title is-4">{'CARS'}</h1>
           </a>
-
-          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
+          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={() => onClickDropdown()}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
+          <Dropdown
+            dropDownShow={dropDownShow}
+            setUserId={setUserId}
+            onClickDropdown={onClickDropdown} />
         </div>
       </div>
 
@@ -32,3 +36,5 @@ export default function () {
     </Fragment>
   );
 };
+
+export default NavbarTemplate;
