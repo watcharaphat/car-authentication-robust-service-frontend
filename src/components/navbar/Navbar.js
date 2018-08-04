@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { withRouter } from 'react-router';
 import './Navbar.css';
 
 class Navbar extends Component {
@@ -37,4 +36,4 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(Navbar);
+export default Navbar;

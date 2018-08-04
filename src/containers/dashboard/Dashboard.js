@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import DashboardTemplate from './Template';
-import crypto from 'crypto';
+// import crypto from 'crypto';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -25,13 +25,25 @@ class Dashboard extends Component {
 
   render() {
     if (this.props.users) {
-      console.log('*** render ***');
-      console.log(this.props.users);
-      const sign = crypto.createSign('sha256');
-      sign.update('some data to sign');
+      // console.log('*** render ***');
+      // const signer = crypto.createSign('sha256');
+      // const data = 'bobo';
+      // signer.update(data);
+      // signer.end();
 
-      const privateKey = this.props.users['user1'].privateKey;
-      console.log('privateKey:', privateKey);
+      // const privateKey = this.props.users['1'].privateKey;
+      // const signature = signer.sign(privateKey);
+
+      // console.log('signature:', signature);
+
+      // const verifier = crypto.createVerify('sha256');
+      // verifier.update(data);
+      // verifier.end();
+
+      // const publicKey = this.props.users['1'].publicKey;
+      // const result = verifier.verify(publicKey, signature, 'hex');
+
+      // console.log('result:', result);
     }
 
     return DashboardTemplate.call(this);
