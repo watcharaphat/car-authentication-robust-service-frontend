@@ -26,3 +26,11 @@
   margin-left: 15px;
   margin-right: 15px;
 }
+
+.button-abc {
+  display: inline-block;
+}
+
+.take-back {
+  margin-left: 6rem;
+}

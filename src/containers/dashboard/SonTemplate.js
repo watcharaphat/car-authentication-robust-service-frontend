@@ -1,40 +1,35 @@
 import React from 'react';
-import './Dashboard.css';
 
 export default function () {
   return (
     <section className="dashboard section">
       <div className="container is-mobile">
         <h1 className="title is-4">
-          {'My Cars'}
+          {'Borrowed Cars'}
         </h1>
-        {myCarList(this.state.myCars)}
-        <div className="provide-access">
-          <span className="provide-span">{'Provide car access to'}</span>
-          <div className="select provide-select">
-            <select>
-              {
-                ['My son', 'Tam', 'Prayut'].map(name =>
-                  <option key={name}>{name}</option>
-                )
-              }
-            </select>
-          </div>
-          <div className="button-abc">
-            <button
-              className="button is-info"
-              onClick={this.onClickBtn}
-            >
-              {'Submit'}
-            </button>
-            <button
-              className="button is-light take-back"
-              onClick={this.onClickTakeBack}
-            >
-              {'Take back'}
-            </button>
-          </div>
-        </div>
+        {
+          this.state.sonCars.length > 0 ?
+            myCarList(this.state.sonCars)
+            : <span>{'None'}</span>
+        }
+        {
+          this.state.sonCars.length > 0 ?
+            <div className="provide-access">
+              <button
+                className="button is-success"
+                onClick={this.onClickUnlock}
+              >
+                {'Unlock'}
+              </button>
+              <button
+                className="button is-info provide-select"
+                onClick={this.onClicLock}
+              >
+                {'Lock'}
+              </button>
+            </div>
+            : null
+        }
       </div>
     </section>
   );

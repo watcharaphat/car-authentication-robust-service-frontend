@@ -1,32 +1,27 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import moment from 'moment';
 import { setUsersKey } from '../../actions/User';
 import DashboardTemplate from './Template';
+import SonTemplate from './SonTemplate';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
 
+    this.onClickBtn = this.onClickBtn.bind(this);
+
     this.state = {
       myCars: [],
+      sonCars: [],
     };
   }
 
   async componentDidMount() {
-    axios.defaults.baseURL = 'http://travelerhub.xyz:3000/api';
+    axios.defaults.baseURL = 'http://travelerhub.xyz:3000/';
 
-    // let users;
-    // try {
-    //   const response = await axios.get('/key');
-    //   users = response.data;
-    // } catch (err) {
-    //   throw err;
-    // }
-
-    // this.props.setUsersKey(users);
-
-    this.setState({
+    await this.setState({
       myCars: [
         {
           name: 'Sweetie Car',
@@ -34,50 +29,66 @@ class Dashboard extends Component {
         },
       ],
     });
+
+    this.keepFetching();
   }
 
-  async onClickButton() {
-    axios.defaults.baseURL = 'http://travelerhub.xyz:3000/api';
-
-    try{ 
-      let payload ={ 
-        carId: "1",
-        period: {
-          start: "ts",
-          end: "ts",
-        },
-        assignTo: "string"
-      };
-      const response = await axios.post('/app/users', payload);
-    } catch (err) {
-      throw err;
+  async keepFetching() {
+    while (true) {
+      const response = await axios.get('/carList');
+      if (response.data) {
+        const sonCars = response.data.result;
+        await this.setState({ sonCars });
+      }
+      await this.sleep(5000);
     }
   }
 
+  sleep = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
+
+  async componentDidUpdate(prevProps) {
+    if (this.props.userId !== prevProps.userId) {
+      const response = axios.get('/carList');
+      const sonCars = response.data.result;
+      this.setState({ sonCars });
+    }
+  }
+
+  onClickUnlock() {
+    alert('Unlock');
+  }
+
+  onClickLock() {
+    alert('Lock');
+  }
+
+  async onClickTakeBack() {
+    await axios.get('/reset');
+    alert('Take car back');
+  }
+
+  async onClickBtn() {
+    await axios.get('/addCar');
+
+    alert('Provided access');
+
+    // this.setState({
+    //   sonCars: [
+    //     {
+    //       name: 'Sweetie Car',
+    //       model: 'Nissan Teana',
+    //     },
+    //   ],
+    // });
+  }
+
   render() {
-    // if (this.props.users['1'].privateKey) {
-    //   console.log('*** render ***');
-    //   const signer = crypto.createSign('sha256');
-    //   const data = 'bobo';
-    //   signer.update(data);
-    //   signer.end();
-
-    //   const privateKey = this.props.users['1'].privateKey;
-    //   const signature = signer.sign(privateKey);
-
-    //   console.log('signature:', signature);
-
-    //   const verifier = crypto.createVerify('sha256');
-    //   verifier.update(data);
-    //   verifier.end();
-
-    //   const publicKey = this.props.users['1'].publicKey;
-    //   const result = verifier.verify(publicKey, signature, 'hex');
-
-    //   console.log('result:', result);
-    // }
-
-    return DashboardTemplate.call(this);
+    switch (this.props.userId) {
+      case '1':
+        return DashboardTemplate.call(this);
+      case '2':
+        return SonTemplate.call(this);
+    }
   }
 }
 
